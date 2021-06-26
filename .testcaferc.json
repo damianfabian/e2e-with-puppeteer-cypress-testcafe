@@ -1,0 +1,14 @@
+{
+    "browsers": ["chrome --ignore-certificate-errors --autoplay-policy=no-user-gesture-required --allow-insecure-localhost --use-fake-ui-for-media-stream --use-fake-device-for-media-stream"],
+    "src": "./tests/*.testcafe.*",
+    "skipJsErrors": true,
+    "developerMode": true,
+    "appCommand": "npm run serve-cafe",
+    "hostname": "localhost",
+    "stopOnFirstFail": true,
+    "ssl": {
+        "pfx": "/Volumes/Data/Projects/e2e/cert/CA/testingdomain.pfx",
+        "rejectUnauthorized": true,
+        "passphrase": "fabian"
+    }
+}

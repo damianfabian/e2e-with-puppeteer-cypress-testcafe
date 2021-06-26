@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Test Demo</title>
+    </head>
+    <body>
+        <main>
+            <h1>Video Camera Test</h1>
+            <video id="camera" autoplay="true"></video>
+            <button id="stop">Stop Camera</button>
+        </main>
+        <script>
+            let stream;
+            document.addEventListener("DOMContentLoaded", function(event) { 
+                document.querySelector('#stop').addEventListener('click', function() {
+                    stream.getTracks().forEach(function(track) {
+                        track.stop();
+                    });
+                })
+
+                const camera = navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function(str) {
+                    stream = str;
+                    const video = document.querySelector('#camera');
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function(e) {
+                        video.play();
+                    };
+                })
+                .catch(function(err) {
+                    alert(err.message);
+                });;
+                
+            });
+        </script>
+    </body>
+</html>
